@@ -4,8 +4,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose')
 const { authRoute } = require ("./routes/auth")
+const { booksRoute } = require("./routes/book")
 const cors = require ("cors")
 const passport = require('passport')
+
 
 var app = express();
 /*  config passport */
@@ -27,5 +29,6 @@ mongoose
 
 
 
-app.use("/api", authRoute)
+app.use("/api", [authRoute,  booksRoute])
+
 module.exports = app;
